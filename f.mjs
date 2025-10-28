@@ -1,16 +1,6 @@
-function findSolution(objetivo) {
-  function find(actual, historial) {
-    if (actual === objetivo) {
-      return historial
-    } else if (actual > objetivo) {
-      return null
-    } else {
-      return (
-        find(actual + 5, `(${historial} + 5)`) ??
-        find(actual * 3, `(${historial} * 3)`)
-      )
-    }
-  }
-  return find(1, '1')
+const objeto = {
+	numeros: [1, 2, 3, 4, 5, 6, 7, 8],
+	letras: ['a', 'b', 'c', 'd']
 }
-console.log(findSolution(26))
+
+console.log(Object.keys(objeto))

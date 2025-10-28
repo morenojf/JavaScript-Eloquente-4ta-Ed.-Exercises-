@@ -24,7 +24,6 @@ const cortarBs = (chain) => {
 
 console.log("Contador de B mayuscula en la palabra Bamonos", cortarBs('Bamonos'))
 
-
 // 3 funcion cortarCaracter similar a cortarBs, toma dos argumentos, la cadena y el caracter que se va a contar
 
 const contarCaracter = (chain, letter) => {
