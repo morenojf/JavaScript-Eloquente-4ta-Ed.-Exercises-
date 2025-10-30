@@ -1,21 +1,24 @@
 /* 1. Escribe una función range que tome dos argumentos, inicio y fin, y devuelva un array que contenga todos los números desde inicio hasta fin, incluyendo fin. */
 
 let numIni = 10
-let numFin = 1
-let paso = -2
+let numFin = 4
+let paso = -4
 let numArray = []
 
 function range(numIni, numFin, paso) {
-  if (!paso) {
-    for (let index = numIni; index <= numFin; index++) {
+  if (paso > 0 && numIni < numFin) {
+    for (let index = numIni; index <= numFin; index += paso) {
       numArray.push(index)
     }
-  } else if (paso < 0) {
+  } else if (paso < 0 && numIni > numFin)  {
+
+	// Recordar que la condicion evalua un mientras que y NO un hasta que
+	// Mientras que index sea mayor o igual a numFin repites el bucle for
     for (let index = numIni; index >= numFin; index += paso) {
 		numArray.push(index)
     }
   } else {
-    for (let index = numIni; index <= numFin; index += paso) {
+    for (let index = numIni; index <= numFin; index++) {
       numArray.push(index)
     }
   }
@@ -43,3 +46,8 @@ console.log(range(numIni, numFin, paso))
 	b) La llamada a la función range(1, 10, 2) debería devolver [1, 3, 5, 7, 9]. 
 	c) Asegúrate de que esto también funcione con valores de paso negativos, de modo que range (5, 2, -1) produzca [5, 4, 3, 2]. 
 */
+
+
+// EN LA SOLUCIÓN DEL LIBRO PARA ESTE EJERCICIO, AL INICIO DE LA FUNCIÓN HAY UNA CONDICION QUE EVALUA SI PASO ES POSITIVO O -1 SIN EMBARGO NO DEJA QUE PASO PUEDA SER MENOR A -1
+// POR LO QUE SOLO ACEPTA -1 a infinito
+// CORREGIDO PERMITIENDO VALORES MENORES A -1
