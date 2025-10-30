@@ -59,7 +59,7 @@ function arrayToList(array) {
 
 let newArray = []
 function listToArray(list) {
-  // Esto lo tome de las pitas del libro
+  // Esto lo tome de las pistas del libro
   // basicamente lo que esta haciendo es con cada iteracion acceder mas adentro del objeto
   // hasta la iteración llega a nodo.rest = null
   // ahi la condicion nodo se hace false y termina el bucle
@@ -110,18 +110,42 @@ function nth(list, position) {
 
 // 5. Escribir una versión recursiva de nth (pendiente)
 
-function nthRecursive (list, position){
-	let selectedValue
-	let counter = 0 
-	if (counter <= position && list){
-		list.rest
-		counter++
-		selectedValue = list.value
-		nthRecursive()
-	} else {
-		return selectedValue
-	}
-	  
+// al principio lo intente hacer asi pero esto no es recursion pura, dado que tiene una variable global
+// coutner y obtained value
+
+// let counter = 0
+// let obtainedValue
+// function nthRecursive(list, position) {
+
+// 	console.log(Boolean(list))
+
+//   if (list && counter <= position) {
+//     counter++
+//     let nodo = list.rest
+//     obtainedValue = list.value
+//     nthRecursive(nodo, position)
+//   } 
+
+//   return counter > position ? undefined : obtainedValue
+// }
+
+// IDEALMENTE cada llamada devuelve su resultado (recursión pura)
+// codigo IA 
+
+function nthRecursive(list, position) {
+  if (!list) return undefined // si la lista no existe devuelve undefined
+  if (position === 0) return list.value // cuando position sea === 0 entonces devuelve el list.value de la llamada en curso
+
+  return nthRecursive(list.rest, position - 1) 
+  // si no se cumplen las condiciones anteriores, se llama de nuevo a la funcion
+  // pero restamos uno a position para aproximarlo a cero
 }
 
-console.log(nthRecursive(prepend(10, prepend(20, arrayToList(arrayNum))), 0))
+
+// cuando le doy un numero que no existe en la lista, position se resta hasta que la lista no existe
+// es decir !list = true 
+// por lo que se retorna un undefined. 
+
+console.log(nthRecursive(prepend(10, prepend(20, arrayToList(arrayNum))), 1))
+
+// Realmente la ultima función seria la función definitiva (hablando de nth recursivo)
