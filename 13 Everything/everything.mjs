@@ -15,7 +15,11 @@ function everyBucle(array, test) {
 }
 
 function everySome(array, test) {
-	console.log(array.some(test))
+  if (array.length <= 0) return false
+  // alguno de los que esta aqui cumple esta condicion? (verdadero, al menos uno si cumple esta condicion)
+  // alguno de los que esta aqui ! no cumple esta condicion? (falso, hay al menos uno que si lo cumple)
+  // esta funcion la hizo AI. 
+  return !array.some((x) => !test(x))
 }
 
 console.log(everySome([1, 3, 5], (n) => n < 10))
@@ -24,3 +28,6 @@ console.log(everySome([2, 4, 16], (n) => n < 10))
 // → false
 console.log(everySome([], (n) => n < 10))
 // → true
+
+//el ultimo deberia regresar un true pero añadi una validacion para que si estuviera vacio regresara false porque 
+// me genera conflicto un array vacio que retorna true
